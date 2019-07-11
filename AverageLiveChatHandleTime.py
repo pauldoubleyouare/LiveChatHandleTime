@@ -27,10 +27,8 @@ def main():
     group = "1"
     group_param = "group="
     full_url = url + "?" + start_date_param + start_date + "&" + end_date_param + end_date + "&" + group_param + group
-    # TODO allow users to input start_date and end_date
 
     response = requests.get(full_url, headers=headers, auth=(username, api_key))
-    # response_json = json.dumps(response.json(), indent=3, sort_keys=True)
 
     data = []
     for date in response.json():
@@ -46,9 +44,7 @@ def main():
         lc_writer = csv.writer(lc_data)
         lc_writer.writerow(field_names)
         lc_writer.writerows(data)
-
     print("Your file has been written to 'lc_data.csv'")
-    # TODO create new CSV each time
 
 
 if __name__ == "__main__":
